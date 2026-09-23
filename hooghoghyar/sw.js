@@ -1,5 +1,5 @@
 // sw.js — Service Worker — Offline-first for PWA (Cache-first for static, Network-first for data)
-const CACHE = 'hooghoghyar-v1';
+const CACHE = 'hooghoghyar-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
