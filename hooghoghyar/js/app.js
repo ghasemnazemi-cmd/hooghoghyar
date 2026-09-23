@@ -12,6 +12,7 @@ import { idbGetAll } from './idb.js';
 import { initStats } from './statistics.js';
 import { initAchievements } from './achievements.js';
 import { initSync } from './sync.js';
+import { initAnimations } from './animations.js';
 
 document.addEventListener('DOMContentLoaded', ()=>{
   initVH();
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initStats();
   initAchievements();
   initSync();
+  initAnimations();
   // PWA: register SW
   if('serviceWorker' in navigator && location.protocol !== 'file:'){
     navigator.serviceWorker.register('./sw.js').then(()=>{

@@ -1,0 +1,30 @@
+/* animations.css — Modern 2026 — Scroll + Hover + View Transitions */
+@property --angle{syntax:'<angle>'; initial-value:0deg; inherits:false}
+
+/* Stagger */
+.stagger > *{opacity:0; animation:fadeIn 0.5s var(--ease) both}
+.stagger > *:nth-child(1){animation-delay:0.05s}
+.stagger > *:nth-child(2){animation-delay:0.1s}
+.stagger > *:nth-child(3){animation-delay:0.15s}
+.stagger > *:nth-child(4){animation-delay:0.2s}
+.stagger > *:nth-child(5){animation-delay:0.25s}
+.stagger > *:nth-child(6){animation-delay:0.3s}
+
+/* Reveal on scroll */
+.reveal{opacity:0; transform:translateY(16px); transition:0.6s var(--ease)}
+.reveal.in{opacity:1; transform:none}
+
+/* Card 3D hover */
+.card-3d{transform-style:preserve-3d; transition:transform 0.4s var(--ease), box-shadow 0.4s var(--ease)}
+.card-3d:hover{transform:translateY(-4px) rotateX(2deg) rotateY(-2deg); box-shadow:var(--shadow-glow), var(--shadow-lg)}
+
+/* Shine */
+.shine{position:relative; overflow:hidden}
+.shine::after{content:''; position:absolute; inset:0; background:linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.08) 40%, transparent 60%); transform:translateX(-100%); transition:transform 0.6s var(--ease)}
+.shine:hover::after{transform:translateX(100%)}
+
+/* View transition */
+::view-transition-old(root),::view-transition-new(root){animation-duration:0.4s}
+
+/* Pulse */
+.pulse{animation:glow 2s ease infinite}
