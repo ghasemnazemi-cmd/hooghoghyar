@@ -1,27 +1,96 @@
-/* responsive.css — 320 / 768 / 1024 / 1920 */
-@media(max-width:1100px){
-  .hero-inner{grid-template-columns:1fr}
-  .course-grid{grid-template-columns:repeat(2,1fr)}
-  .bank-grid{grid-template-columns:repeat(2,1fr)}
-  .booklet-wrap{grid-template-columns:1fr}
-  .booklet-side{position:relative; top:auto; display:grid; grid-template-columns:1fr 1fr}
-  .exam-hero{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  .nav{display:none}
-  .bottom-nav{display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(10,6,28,0.96); border-top:1px solid var(--line); backdrop-filter:blur(16px); padding:8px 8px calc(8px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:30}
-  .bottom-nav button{flex:1; background:transparent; border:0; color:var(--muted); font-size:11px; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px}
-  .bottom-nav button.active{color:var(--accent)}
-  .hero{padding:28px 16px 24px}
-  .hero h1{font-size:34px}
-}
-@media(max-width:640px){
-  .course-grid{grid-template-columns:1fr}
-  .bank-grid{grid-template-columns:1fr}
-  .booklet-side{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
-  .topbar{padding:0 12px}
+/* responsive.css — FIXED for Mobile 320 + Desktop 1920 — 2026-09-23 */
+html{overflow-x:clip}
+body{overflow-x:clip}
+
+/* === Desktop 1280-1920 (centered, max 1440) === */
+@media(min-width:1280px){
+  .hero-inner{max-width:1280px}
+  .section{max-width:1280px}
 }
 @media(min-width:1920px){
   .container{max-width:1440px}
+  .hero-inner{max-width:1440px}
+  .section{max-width:1440px}
+  .course-grid{gap:16px}
+  .bank-grid{gap:16px}
+}
+
+/* === Tablet 768-1100 (2 columns) === */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr; gap:24px}
+  .course-grid{grid-template-columns:repeat(2,1fr)}
+  .bank-grid{grid-template-columns:repeat(2,1fr)}
+  .booklet-wrap{grid-template-columns:1fr; gap:16px}
+  .booklet-side{position:relative; top:auto; display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .exam-hero{grid-template-columns:1fr; gap:12px}
+  .section{padding:16px}
+}
+
+/* === Mobile 900 (show bottom-nav, hide top nav) === */
+@media(max-width:900px){
+  .nav{display:none !important}
+  #menuToggle{display:grid !important}
+  .bottom-nav{display:flex !important; position:fixed; bottom:0; left:0; right:0; background:rgba(10,6,28,0.96); border-top:1px solid var(--line); backdrop-filter:blur(16px) saturate(1.2); padding:6px 4px calc(6px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:30; overflow-x:auto; scrollbar-width:none}
+  .bottom-nav::-webkit-scrollbar{display:none}
+  .bottom-nav button{flex:1 1 0; min-width:48px; background:transparent; border:0; color:var(--muted); font-size:10.5px; line-height:1.1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 2px; border-radius:10px; cursor:pointer}
+  .bottom-nav button.active{color:var(--accent); background:rgba(139,92,246,0.10)}
+  body{padding-bottom:72px} /* space for bottom-nav */
+  .drawer{width:88vw; max-width:320px}
+  .hero{padding:28px 16px 24px}
+  .hero h1{font-size:34px; line-height:1.15}
+  .hero-desc{font-size:14.5px}
+  .section-head h2{font-size:18px}
+  .topbar{height:52px; padding:0 12px; gap:8px}
+  .brand b{font-size:14px}
+  .brand small{font-size:11px}
+}
+
+/* === Mobile 640 (1 column) === */
+@media(max-width:640px){
+  .course-grid{grid-template-columns:1fr; gap:10px}
+  .bank-grid{grid-template-columns:1fr; gap:10px}
+  .booklet-side{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column; align-items:stretch}
+  .hero-actions .btn{width:100%; justify-content:center}
+  .topbar{padding:0 10px}
+  .brand-mark{width:30px; height:30px; border-radius:9px; font-size:14px}
+  #loginBtn{padding:0 12px !important; height:36px !important; font-size:13px}
+  .section{padding:12px}
+  .course-card{padding:14px}
+  .bank-card{padding:14px}
+  .exam-main{padding:20px; min-height:auto}
+  .chapter-head{padding:12px 14px}
+  .chapter-body{padding:14px}
+}
+
+/* === Small Mobile 380 (320-380) === */
+@media(max-width:380px){
+  .hero h1{font-size:28px}
+  .hero{padding:22px 12px 20px}
+  .topbar{height:48px}
+  .brand{Gap:8px}
+  .brand b{font-size:13px}
+  .bottom-nav button{font-size:10px; padding:5px 1px; min-width:44px}
+  .section-head{padding:10px 0}
+  .section-head p{font-size:12px; padding:8px 10px}
+}
+
+/* === Ensure no horizontal scroll on any device === */
+@media(max-width:900px){
+  .hero-inner, .section, .course-grid, .bank-grid, .booklet-wrap{width:100%; min-width:0}
+  .course-card, .bank-card, .bs-card{Min-width:0; overflow:hidden}
+}
+
+/* === Desktop hover only (avoid mobile sticky hover) === */
+@media(hover:hover){
+  .course-card:hover{transform:translateY(-2px); border-color:rgba(167,139,250,0.18); box-shadow:var(--shadow)}
+}
+@media(hover:none){
+  .course-card:active{transform:scale(0.99)}
+}
+
+/* === Print (desktop) === */
+@media print{
+  .topbar, .bottom-nav, .drawer, .hero-actions{display:none !important}
+  body{padding-bottom:0; background:white; color:black}
 }
