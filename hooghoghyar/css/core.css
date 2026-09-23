@@ -16,7 +16,7 @@ html[dir="rtl"] body{direction:rtl}
 .grid-12{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
 /* Typography */
 h1,h2,h3{font-family:"Fraunces","Vazirmatn",serif; letter-spacing:-0.02em; line-height:1.1}
-h1{font-size:32px} h2{font-size:22px} h3{font-size:16px}
+h1{font-size:34px; letter-spacing:-0.03em} h2{font-size:23px; letter-spacing:-0.02em} h3{font-size:16px}
 small{color:var(--muted)}
 /* Focus */
 :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
