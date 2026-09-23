@@ -62,24 +62,29 @@ export function initBooklet(){
       });
     });
   }
-  // Load laws.json and render
-  const container = document.getElementById('lawContainerCivil') || document.getElementById('lawContainer Civil');
+  // Load laws.json and render — robust
+  const container = document.getElementById('lawContainerCivil') || document.querySelector('#lawContainerCivil') || document.querySelector('[id*="lawContainer"]');
+  console.log('[booklet] container found:', !!container, container?.id);
   if(container){
-    // Show loading
     container.textContent = 'در حال بارگذاری ۱۳۵ ماده...';
-    fetch('./data/laws.json').then(r=> r.json()).then(laws=>{
+    console.log('[booklet] fetching laws.json...');
+    fetch('./data/laws.json', {cache: 'no-cache'}).then(r=>{
+      console.log('[booklet] fetch status', r.status, r.ok);
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    }).then(laws=>{
+      console.log('[booklet] laws loaded', laws.length);
       container.textContent = '';
       const frag = document.createDocumentFragment();
       laws.forEach(law=>{
         const div = document.createElement('div');
         div.className = 'article-box';
         div.dataset.article = law.id;
-        // law.html is trusted (from our data)
         div.innerHTML = law.html;
         frag.appendChild(div);
       });
       container.appendChild(frag);
-      // Also fill commerce if empty (for demo, clone first 10)
+      console.log('[booklet] rendered', laws.length);
       const comm = document.querySelector('.booklet-panel[data-book="commerce"] .chapter-body');
       if(comm && comm.textContent.includes('در حال بارگذاری')){
         comm.textContent = '';
@@ -93,8 +98,16 @@ export function initBooklet(){
         comm.appendChild(frag2);
       }
     }).catch(e=>{
-      container.textContent = 'خطا در بارگذاری قوانین: ' + e.message;
+      console.error('[booklet] load fail', e);
+      container.innerHTML = 'خطا در بارگذاری قوانین: ' + e.message + '<br><button class="btn btn-primary" onclick="location.reload()">تلاش مجدد</button> <button class="btn btn-ghost" onclick="window.loadBooklet && window.loadBooklet()">بارگذاری مجدد</button>';
     });
+    // Expose for manual retry
+    window.loadBooklet = ()=> {
+      container.textContent = 'تلاش مجدد...';
+      fetch('./data/laws.json').then(r=>r.json()).then(l=>{ container.textContent=''; l.forEach(x=>{const d=document.createElement('div');d.className='article-box';d.innerHTML=x.html;container.appendChild(d)}); });
+    };
+  } else {
+    console.error('[booklet] container NOT found — check id lawContainerCivil');
   }
   // expose
   window.switchBooklet = switchBooklet;
