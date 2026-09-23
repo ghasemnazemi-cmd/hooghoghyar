@@ -1,0 +1,37 @@
+[
+  {
+    "id": "civil",
+    "title": "قانون مدنی",
+    "year": "1307",
+    "lastAmend": "1403",
+    "articles": "1-955"
+  },
+  {
+    "id": "commerce",
+    "title": "قانون تجارت",
+    "year": "1311",
+    "lastAmend": "1397",
+    "articles": "1-600"
+  },
+  {
+    "id": "constitution",
+    "title": "قانون اساسی",
+    "year": "1358",
+    "lastAmend": "1368",
+    "articles": "1-177"
+  },
+  {
+    "id": "criminal",
+    "title": "قانون مجازات اسلامی",
+    "year": "1392",
+    "lastAmend": "1399",
+    "articles": "1-728"
+  },
+  {
+    "id": "criminal_procedure",
+    "title": "آیین دادرسی کیفری",
+    "year": "1392",
+    "lastAmend": "1402",
+    "articles": "1-570"
+  }
+]

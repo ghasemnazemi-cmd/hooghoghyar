@@ -1,0 +1,39 @@
+{
+  "name": "حقوق‌یار — دیوان دانش",
+  "short_name": "حقوق‌یار",
+  "description": "آکادمی حقوق ایران — ۴۶ درس، ۸۹۵ سوال، کتابچه، شبیه‌ساز وکالت",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07051a",
+  "theme_color": "#07051a",
+  "orientation": "portrait-primary",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "بانک سوالات",
+      "url": "./index.html#bank",
+      "description": "۸۹۵ سوال"
+    },
+    {
+      "name": "شبیه‌ساز وکالت",
+      "url": "./index.html#exam",
+      "description": "۲۰ سوال ۳۰ دقیقه"
+    }
+  ]
+}

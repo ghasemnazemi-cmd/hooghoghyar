@@ -1,0 +1,10 @@
+/* variables.css — Design Tokens */
+:root{
+  --bg:#07051a; --surface:#0f0b26; --surface2:#161032; --surface3:#1d1540;
+  --line:rgba(167,139,250,0.10); --line2:rgba(167,139,250,0.18);
+  --accent:#8b5cf6; --accent2:#22d3ee; --gold:#e8d5a8; --gold2:#d4b896;
+  --text:#f8f7ff; --muted:rgba(248,247,255,0.62); --muted2:rgba(248,247,255,0.42);
+  --radius:16px; --radius-lg:22px; --radius-xl:26px;
+  --shadow:0 8px 32px rgba(0,0,0,0.22); --shadow-lg:0 20px 56px rgba(0,0,0,0.28);
+  --ease:cubic-bezier(0.22,1,0.36,1); --max:1280px;
+}

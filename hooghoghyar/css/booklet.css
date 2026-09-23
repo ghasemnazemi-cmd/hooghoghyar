@@ -1,0 +1,10 @@
+/* booklet.css — Booklet Engine */
+.booklet-wrap{display:grid; grid-template-columns:300px 1fr; gap:20px}
+.booklet-side{position:sticky; top:72px; display:flex; flex-direction:column; gap:10px}
+.bs-card{border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,0.04); padding:14px; cursor:pointer}
+.bs-card.active{background:rgba(139,92,246,0.12); border-color:rgba(139,92,246,0.26)}
+.chapter{border-radius:16px; background:rgba(255,255,255,0.03); border:1px solid var(--line); overflow:hidden; margin-top:12px}
+.chapter-head{padding:14px 16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; border-bottom:1px solid var(--line)}
+.chapter-body{padding:16px; display:none}
+.chapter.open .chapter-body{display:block}
+.article{border-top:1px solid var(--line); padding:12px 0}

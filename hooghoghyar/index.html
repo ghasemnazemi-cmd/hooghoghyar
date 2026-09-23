@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes"/>
+<meta name="theme-color" content="#07051a"/>
+<meta name="color-scheme" content="dark light"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'">
+<meta name="description" content="حقوق‌یار — آکادمی حقوق ایران، ۴۶ درس، ۸۹۵ سوال، نسخه مدولار"/>
+<title>حقوق‌یار — نسخه مدولار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/variables.css">
+<link rel="stylesheet" href="./css/core.css">
+<link rel="stylesheet" href="./css/layout.css">
+<link rel="stylesheet" href="./css/components.css">
+<link rel="stylesheet" href="./css/quiz.css">
+<link rel="stylesheet" href="./css/booklet.css">
+<link rel="stylesheet" href="./css/admin.css">
+<link rel="stylesheet" href="./css/responsive.css">
+<link rel="stylesheet" href="./css/themes.css">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+<a href="#main" class="skip-link">پرش به محتوا</a>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">⚖️</div>
+    <div><b>دیوان دانش</b><br><small style="color:var(--muted)">آکادمی حقوق ایران</small></div>
+  </div>
+  <nav class="nav" aria-label="ناوبری">
+    <button type="button" class="nav-link active" data-tab="home" onclick="switchTab('home')">خانه</button>
+    <button type="button" class="nav-link" data-tab="courses" onclick="switchTab('courses')">دروس</button>
+    <button type="button" class="nav-link" data-tab="booklet" onclick="switchTab('booklet')">کتابچه</button>
+    <button type="button" class="nav-link" data-tab="bank" onclick="switchTab('bank')">بانک</button>
+    <button type="button" class="nav-link" data-tab="exam" onclick="switchTab('exam')">آزمون</button>
+    <button type="button" class="nav-link" data-tab="leader" onclick="switchTab('leader')">پرونده</button>
+  </nav>
+  <div style="display:flex; align-items:center; gap:8px">
+    <button type="button" id="themeToggle" aria-label="تغییر تم" title="ماه حلالی" style="width:38px; height:38px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); display:grid; place-items:center; cursor:pointer">
+      <span id="themeIconMoon">🌙</span><span id="themeIconSun" style="display:none">☀️</span>
+    </button>
+    <button type="button" id="loginBtn" onclick="document.getElementById('loginModal').style.display='block'" style="height:38px; padding:0 14px; border-radius:12px; background:var(--accent); color:white; border:0; font-weight:600; cursor:pointer">ورود</button>
+    <button type="button" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false" aria-controls="drawer">☰</button>
+  </div>
+</header>
+
+<div id="drawer" class="drawer" role="dialog" aria-modal="true" aria-label="منوی اصلی">
+  <div class="drawer-header">
+    <div style="display:flex; align-items:center; gap:10px"><div style="width:32px; height:32px; border-radius:10px; background:var(--accent); display:grid; place-items:center">⚖️</div><b>دیوان دانش</b></div>
+    <button type="button" id="drawerClose" aria-label="بستن">✕</button>
+  </div>
+  <div class="drawer-links drawer__links" style="padding:12px; display:flex; flex-direction:column">
+    <button type="button" class="drawer-link active" data-tab="home" onclick="switchTab('home')"><span class="drawer-link-icon"></span><span><b>خانه</b><small>داشبورد</small></span></button>
+    <button type="button" class="drawer-link" data-tab="courses" onclick="switchTab('courses')"><span class="drawer-link-icon"></span><span><b>نقشه دروس</b><small>۴۶ درس • ۸۹۵ سوال</small></span></button>
+    <button type="button" class="drawer-link" data-tab="booklet" onclick="switchTab('booklet')"><span class="drawer-link-icon"></span><span><b>کتابچه</b><small>مدنی ۱۳۵۳ + تجارت ۶۰۰</small></span></button>
+    <button type="button" class="drawer-link" data-tab="bank" onclick="switchTab('bank')"><span class="drawer-link-icon"></span><span><b>بانک سوالات</b><small>۸۹۵ سوال</small></span></button>
+    <button type="button" class="drawer-link" data-tab="exam" onclick="switchTab('exam')"><span class="drawer-link-icon"></span><span><b>شبیه‌ساز وکالت</b><small>۲۰ سوال</small></span></button>
+    <button type="button" class="drawer-link" data-tab="leader" onclick="switchTab('leader')"><span class="drawer-link-icon"></span><span><b>پرونده</b><small>XP • رتبه</small></span></button>
+  </div>
+</div>
+
+<main id="main" class="container" style="padding:20px 0 80px">
+  <!-- HOME -->
+  <div class="tabs active" id="tab-home">
+    <section class="hero" style="border-radius:22px; margin-top:16px">
+      <div class="hero-inner">
+        <div>
+          <span class="badge">بازی‌آموزش حقوق ایران — ۹۹ عنوان • ۸۹۵ پرسش</span>
+          <h1>از کارآموز تا <span>استاد حقوق</span></h1>
+          <p class="hero-desc">تمام برنامه ۱۴۰ واحدی کارشناسی حقوق — ۴۶ درس تعاملی با XP و streak</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" onclick="switchTab('courses')">شروع یادگیری</button>
+            <button type="button" class="btn btn-ghost" onclick="switchTab('booklet')">مرور کتابچه</button>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:22px; padding:20px; min-height:220px">
+          <h3>آمار سریع</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px">
+            <div style="background:rgba(255,255,255,0.04); padding:12px; border-radius:12px; text-align:center"><b>۴۶</b><br><small>درس</small></div>
+            <div style="background:rgba(255,255,255,0.04); padding:12px; border-radius:12px; text-align:center"><b>۸۹۵</b><br><small>سوال</small></div>
+            <div style="background:rgba(255,255,255,0.04); padding:12px; border-radius:12px; text-align:center"><b>۱۳۵</b><br><small>ماده</small></div>
+            <div style="background:rgba(255,255,255,0.04); padding:12px; border-radius:12px; text-align:center"><b>۱۴ روز</b><br><small>streak</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><h2>ادامه یادگیری</h2></div>
+      <div id="continueList" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px"></div>
+    </section>
+  </div>
+
+  <!-- COURSES -->
+  <div class="tabs" id="tab-courses">
+    <div style="display:flex; justify-content:space-between; align-items:end; gap:12px; flex-wrap:wrap; margin-top:16px">
+      <div><h2>نقشه — ۴۶ درسِ تعاملی</h2><p style="color:var(--muted); font-size:13px">فیلتر دسته‌ای • جستجوی آنی • XP و streak</p></div>
+      <span class="pill">۱۴۰ واحد</span>
+    </div>
+    <div class="filter-bar">
+      <div class="search"><span>⌕</span><input id="searchInput" placeholder="جستجو: اسناد تجاری، ارث، شفعه..."/></div>
+      <div style="display:flex; gap:6px; flex-wrap:wrap">
+        <button class="chip active" data-cat="all" type="button">همه ۴۶</button>
+        <button class="chip" data-cat="private" type="button">خصوصی</button>
+        <button class="chip" data-cat="public" type="button">عمومی</button>
+        <button class="chip" data-cat="jaza" type="button">جزا</button>
+        <button class="chip" data-cat="dadresi" type="button">دادرسی</button>
+      </div>
+    </div>
+    <div class="course-grid" id="coursesGrid"></div>
+  </div>
+
+  <!-- BANK -->
+  <div class="tabs" id="tab-bank">
+    <div style="display:flex; justify-content:space-between; align-items:end; gap:12px; flex-wrap:wrap; margin-top:16px">
+      <div><h2>بانک — ۸۹۵ پرسشِ مستند</h2><p style="color:var(--muted); font-size:13px">۴ مدل پرسش • فیلتر • ارجاع به ماده</p></div>
+      <span class="pill">۳۶۱ مستند</span>
+    </div>
+    <div style="display:flex; gap:8px; margin:12px 0; flex-wrap:wrap">
+      <div class="search" style="flex:1.2"><span>⌕</span><input id="bankSearch" placeholder="جستجو: ماده ۱۰، خیار غبن..."/><span style="font-size:10px; color:var(--muted)">/</span></div>
+      <select id="bankType" style="background:rgba(255,255,255,0.06); color:var(--text); border:1px solid var(--line); padding:10px 12px; border-radius:999px; font-size:12.5px"><option value="all">همه ۸۹۵</option><option value="mcq">تستی ۴۰۳</option><option value="tf">درست/نادرست ۲۲۸</option><option value="case">پرونده‌ای ۲۲۶</option><option value="essay">تشریحی ۳۸</option></select>
+    </div>
+    <div id="bankList" class="bank-grid"></div>
+  </div>
+
+  <!-- EXAM -->
+  <div class="tabs" id="tab-exam">
+    <div style="display:flex; justify-content:space-between; align-items:end; gap:12px; flex-wrap:wrap; margin-top:16px">
+      <div><h2>شبیه‌ساز وکالت — ۲۰ پرسش • ۳۰ دقیقه</h2><p style="color:var(--muted); font-size:13px">ضرایب واقعی • کارنامه آنی</p></div>
+      <span class="pill">ضریب‌دار</span>
+    </div>
+    <div class="exam-hero" style="margin-top:16px">
+      <div class="exam-main">
+        <div style="display:flex; gap:12px; align-items:center">
+          <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg, var(--accent), var(--accent2)); display:grid; place-items:center">⚖️</div>
+          <div><div style="font-size:11px; color:var(--accent); font-weight:700">DAILY • 30:00</div><h3>آماده‌ای برای شبیه‌ساز؟</h3></div>
+        </div>
+        <p style="color:var(--muted); font-size:13px; margin-top:12px">۲۰ سوال تصادفی از ۸۹۵ — تحلیل اشتباه با مستند</p>
+        <button type="button" id="startExamBtn" class="btn btn-primary" style="margin-top:16px; width:fit-content">شروع آزمون</button>
+        <div id="examTimer" style="margin-top:12px; font-family:monospace; font-size:18px; font-weight:700"></div>
+      </div>
+      <div class="exam-side">
+        <div style="background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:16px; padding:16px">
+          <b>نکات</b><br><small style="color:var(--muted)">تایمر واقعی — پس از ۳۰ دقیقه خودکار تمام می‌شود</small>
+        </div>
+        <div id="examDots" style="display:flex; gap:4px; flex-wrap:wrap; margin-top:8px"></div>
+      </div>
+    </div>
+    <div id="examArea" style="margin-top:16px; background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:16px; padding:16px; min-height:160px"></div>
+    <div id="examBox" style="margin-top:12px; background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:16px; padding:16px; display:none"></div>
+  </div>
+
+  <!-- LEADER -->
+  <div class="tabs" id="tab-leader">
+    <h2 style="margin-top:16px">پرونده و رتبه</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:16px; padding:16px; text-align:center"><div style="font-size:32px">🥈</div><b>نفر دوم</b><br><small>6,120 XP</small></div>
+      <div style="background:linear-gradient(180deg, rgba(139,92,246,0.14), rgba(255,255,255,0.04)); border:1px solid rgba(139,92,246,0.24); border-radius:16px; padding:16px; text-align:center; transform:translateY(-8px)"><div style="font-size:32px">🥇</div><b>نفر اول</b><br><small>7,400 XP</small></div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:16px; padding:16px; text-align:center"><div style="font-size:32px">🥉</div><b>نفر سوم</b><br><small>5,880 XP</small></div>
+    </div>
+    <div id="statsContainer" style="margin-top:20px"></div>
+    <h3 style="margin-top:24px">اچیومنت‌ها</h3>
+    <div id="achievementsContainer" style="margin-top:12px; min-height:60px"></div>
+  </div>
+
+  <!-- BOOKLET -->
+  <div class="tabs" id="tab-booklet">
+    <div style="margin-top:16px"><h2>کتابچه قوانین</h2><p style="color:var(--muted); font-size:13px">مدنی ۱۳۵۳ • تجارت ۶۰۰ — جستجو + TOC</p></div>
+    <div class="booklet-wrap" style="margin-top:16px">
+      <div class="booklet-side">
+        <div class="search"><span>⌕</span><input id="bookletSearch" placeholder="جستجو: «خیار غبن» یا «ماده ۲۱۹»"/><span style="font-size:10px; color:var(--muted)">/</span></div>
+        <div class="bs-card active" data-book="civil" onclick="switchBooklet('civil')"><b>حقوق مدنی</b><br><small>۱۳۵۳ ماده</small></div>
+        <div class="bs-card" data-book="commerce" onclick="switchBooklet('commerce')"><b>حقوق تجارت</b><br><small>۶۰۰ ماده</small></div>
+        <div class="toc" style="display:grid; gap:6px; margin-top:8px">
+          <a href="#ch1" style="padding:10px 12px; background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:12px; font-size:12.5px">فصل ۱ — اشخاص <span style="color:var(--muted)">۱۲ ماده</span></a>
+          <a href="#ch2" style="padding:10px 12px; background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:12px; font-size:12.5px">فصل ۲ — اموال <span style="color:var(--muted)">۱۸ ماده</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="booklet-panel active" data-book="civil">
+          <div class="chapter open" id="ch1">
+            <div class="chapter-head" onclick="toggleChapter(this)" aria-expanded="true"><h3>فصل ۱ — اشخاص</h3><small>۱۲ ماده</small></div>
+            <div class="chapter-body" id="lawContainer Civil">در حال بارگذاری از <code>data/laws.json</code>...</div>
+          </div>
+          <div class="chapter" id="ch2">
+            <div class="chapter-head" onclick="toggleChapter(this)" aria-expanded="false"><h3>فصل ۲ — اموال</h3><small>۱۸ ماده</small></div>
+            <div class="chapter-body">...</div>
+          </div>
+        </div>
+        <div class="booklet-panel" data-book="commerce">
+          <div class="chapter open">
+            <div class="chapter-head" onclick="toggleChapter(this)" aria-expanded="true"><h3>باب ۱ — تاجر</h3><small>۱۰ ماده</small></div>
+            <div class="chapter-body">در حال بارگذاری...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN (Easter Egg) -->
+  <div class="tabs" id="tab-admin">
+    <div style="max-width:720px; margin:32px auto; padding:24px; background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:20px">
+      <h3>پنل مدیریت — Easter Egg</h3>
+      <p style="color:var(--muted); font-size:13px">این پنل احراز واقعی نیست — فقط برای دمو. تمام منطق Client-Side است.</p>
+      <div style="background:rgba(239,68,68,0.10); border:1px solid rgba(239,68,68,0.22); border-radius:12px; padding:10px 12px; font-size:12.5px; margin:12px 0">⚠️ هشدار: بدون Backend، هر کسی می‌تواند <code>localStorage.setItem('hq_admin','1')</code> را اجرا کند — برای داده حساس از سرور استفاده کنید.</div>
+      <div id="adminGate" style="margin-top:12px">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+          <select id="phoneModel" style="height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px"></select>
+          <select id="phoneRam" style="height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px"><option>4GB</option><option>6GB</option><option>8GB</option><option>12GB</option></select>
+          <select id="phoneStorage" style="height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px"><option>64GB</option><option>128GB</option><option>256GB</option><option>512GB</option></select>
+          <select id="phoneColor" style="height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px"><option>مشکی</option><option>سفید</option><option>آبی</option></select>
+        </div>
+        <button type="button" onclick="checkPhoneGate()" style="margin-top:14px; height:42px; width:100%; border-radius:12px; background:linear-gradient(135deg,#8b5cf6,#6366f1); color:white; border:0; font-weight:700">ورود</button>
+        <div id="phoneMsg" style="margin-top:12px; font-size:13px; color:var(--muted)"></div>
+      </div>
+      <div id="adminPanel" style="display:none; margin-top:18px; padding:16px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.22); border-radius:16px">
+        <b>ادمین فعال — خوش آمدید</b>
+        <p style="font-size:13px; color:var(--muted); margin-top:6px">مدیریت 46/895/135 — localStorage</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="loginModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); z-index:70; place-items:center">
+  <div style="background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:24px; width:min(400px, 90vw)">
+    <h3>ورود / ثبت‌نام — Sync ابری</h3>
+    <p style="font-size:13px; color:var(--muted); margin:8px 0 12px">بدون Backend قبلی Easter Egg بود — حالا JWT واقعی (demo/demo123)</p>
+    <input id="loginUser" placeholder="نام کاربری" style="width:100%; height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px; margin-bottom:8px">
+    <input id="loginPass" type="password" placeholder="رمز عبور" style="width:100%; height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text); padding:0 12px; margin-bottom:12px">
+    <div style="display:flex; gap:8px">
+      <button type="button" onclick="(async()=>{ try{ await login(document.getElementById('loginUser').value, document.getElementById('loginPass').value); alert('ورود موفق — Sync فعال'); document.getElementById('loginModal').style.display='none'; }catch(e){ alert(e.message); }})()" style="flex:1; height:42px; border-radius:12px; background:var(--accent); color:white; border:0; font-weight:700">ورود</button>
+      <button type="button" onclick="(async()=>{ try{ await register(document.getElementById('loginUser').value, document.getElementById('loginPass').value); alert('ثبت‌نام موفق'); document.getElementById('loginModal').style.display='none'; }catch(e){ alert(e.message); }})()" style="flex:1; height:42px; border-radius:12px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:var(--text)">ثبت‌نام</button>
+    </div>
+    <button type="button" onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:12px; width:100%; height:36px; border-radius:10px; background:transparent; border:1px solid var(--line); color:var(--muted)">بستن</button>
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <button type="button" onclick="syncPush().then(()=> alert('Push OK')).catch(e=> alert(e.message))" style="flex:1; height:36px; border-radius:10px; background:rgba(34,211,238,0.12); border:1px solid rgba(34,211,238,0.22); color:#22d3ee">Sync Push</button>
+      <button type="button" onclick="syncPull().then(()=> alert('Pull OK')).catch(e=> alert(e.message))" style="flex:1; height:36px; border-radius:10px; background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.22); color:#c4b5fd">Sync Pull</button>
+    </div>
+  </div>
+</div>
+<nav class="bottom-nav" aria-label="ناوبری موبایل">
+  <button type="button" class="active" data-tab="home" onclick="switchTab('home')">خانه</button>
+  <button type="button" data-tab="courses" onclick="switchTab('courses')">دروس</button>
+  <button type="button" data-tab="bank" onclick="switchTab('bank')">بانک</button>
+  <button type="button" data-tab="exam" onclick="switchTab('exam')">آزمون</button>
+</nav>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

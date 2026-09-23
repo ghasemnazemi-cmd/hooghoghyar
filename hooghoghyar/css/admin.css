@@ -1,0 +1,4 @@
+/* admin.css — Admin Panel (Easter Egg) */
+#tab-admin .pill{font-size:11px}
+#adminGate select{height:42px}
+#adminPanel{animation:fadeIn 0.22s}
