@@ -35,7 +35,9 @@ export function renderCourses(filter='all', search=''){
       const top=document.createElement('div');
       top.style.cssText='display:flex; justify-content:space-between; align-items:start; gap:8px';
       const icon=document.createElement('div');
-      icon.style.cssText=`width:40px; height:40px; border-radius:11px; background:${c.color}; opacity:0.14; display:grid; place-items:center`;
+      icon.style.cssText=`width:40px; height:40px; border-radius:11px; background:${c.color}20; border:1px solid ${c.color}30; display:grid; place-items:center; font-size:18px`;
+      const iconMap={book:'📖',users:'👥',building:'🏢',handshake:'🤝',shield:'🛡️',users2:'👨‍👩‍👧',scale:'⚖️',gavel:'🔨',briefcase:'💼',graduation:'🎓',bank:'🏦',file:'📄',search:'🔍'};
+      icon.textContent = iconMap[c.icon] || c.icon[0].toUpperCase();
       const cat=document.createElement('span');
       cat.className='pill';
       cat.textContent=c.cat;
