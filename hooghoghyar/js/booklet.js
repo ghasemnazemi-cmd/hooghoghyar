@@ -62,6 +62,40 @@ export function initBooklet(){
       });
     });
   }
+  // Load laws.json and render
+  const container = document.getElementById('lawContainerCivil') || document.getElementById('lawContainer Civil');
+  if(container){
+    // Show loading
+    container.textContent = 'در حال بارگذاری ۱۳۵ ماده...';
+    fetch('./data/laws.json').then(r=> r.json()).then(laws=>{
+      container.textContent = '';
+      const frag = document.createDocumentFragment();
+      laws.forEach(law=>{
+        const div = document.createElement('div');
+        div.className = 'article-box';
+        div.dataset.article = law.id;
+        // law.html is trusted (from our data)
+        div.innerHTML = law.html;
+        frag.appendChild(div);
+      });
+      container.appendChild(frag);
+      // Also fill commerce if empty (for demo, clone first 10)
+      const comm = document.querySelector('.booklet-panel[data-book="commerce"] .chapter-body');
+      if(comm && comm.textContent.includes('در حال بارگذاری')){
+        comm.textContent = '';
+        const frag2 = document.createDocumentFragment();
+        laws.slice(0,10).forEach(law=>{
+          const d=document.createElement('div');
+          d.className='article-box';
+          d.innerHTML = law.html.replace('ماده','ماده تجارت ');
+          frag2.appendChild(d);
+        });
+        comm.appendChild(frag2);
+      }
+    }).catch(e=>{
+      container.textContent = 'خطا در بارگذاری قوانین: ' + e.message;
+    });
+  }
   // expose
   window.switchBooklet = switchBooklet;
   window.toggleChapter = toggleChapter;
