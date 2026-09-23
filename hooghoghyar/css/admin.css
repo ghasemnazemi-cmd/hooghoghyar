@@ -1,4 +1,7 @@
-/* admin.css — Admin Panel (Easter Egg) */
-#tab-admin .pill{font-size:11px}
-#adminGate select{height:42px}
-#adminPanel{animation:fadeIn 0.22s}
+/* admin.css — Ultra Admin 2026 — Glass + micro */
+#tab-admin .pill{font-size:11px; letter-spacing:.02em}
+#adminGate{max-width:520px; margin:40px auto; padding:28px; border-radius:20px; background:oklch(1 0 0 /0.04); border:1px solid var(--line); backdrop-filter:blur(12px)}
+#adminGate select{height:46px; border-radius:14px; background:oklch(1 0 0 /0.06); border:1px solid var(--line); color:var(--text); padding:0 12px}
+#adminPanel{animation:fadeIn .4s var(--ease)}
+.admin-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0}
+@media(max-width:700px){.admin-stats{grid-template-columns:1fr}}

@@ -1,3 +1,11 @@
-/* themes.css — Premium */
-html[data-theme="light"]{--bg:oklch(0.98 0.01 90); --surface:white; --text:oklch(0.2 0.02 280); --line:oklch(0 0 0 /0.08); --muted:oklch(0.2 0.02 280 /0.6)}
-html[data-theme="light"] .topbar{background:oklch(0.98 0.01 90 /0.82); border-color:var(--line)}
+/* themes.css — Light + Dark Ultra — OKLCH */
+html[data-theme="light"]{
+  --bg:oklch(0.98 0.01 90); --bg-soft:oklch(0.96 0.01 90); --surface:white; --surface2:oklch(0.97 0.005 90); --surface3:oklch(0.95 0.008 90);
+  --text:oklch(0.18 0.02 280); --muted:oklch(0.18 0.02 280 /0.58); --muted2:oklch(0.18 0.02 280 /0.36);
+  --line:oklch(0 0 0 /0.07); --line2:oklch(0 0 0 /0.10); --line-hover:oklch(0 0 0 /0.14);
+  --shadow-sm:0 2px 12px oklch(0 0 0 /0.06); --shadow:0 8px 28px oklch(0 0 0 /0.10); --shadow-lg:0 20px 50px oklch(0 0 0 /0.12);
+}
+html[data-theme="light"] .topbar{background:oklch(0.98 0.01 90 /0.78); border-color:oklch(0 0 0 /0.06)}
+html[data-theme="light"] .hero{background:radial-gradient(1000px 600px at 80% -10%, oklch(0.62 0.22 290 /0.07), transparent 60%), linear-gradient(180deg, white, oklch(0.98 0.01 90))}
+html[data-theme="light"] .course-card, html[data-theme="light"] .bank-card, html[data-theme="light"] .bs-card{background:white; border-color:oklch(0 0 0 /0.06)}
+html[data-theme="light"] .bottom-nav{background:oklch(0.98 0.01 90 /0.92)}

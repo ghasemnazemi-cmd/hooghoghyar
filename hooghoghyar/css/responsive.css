@@ -1,96 +1,87 @@
-/* responsive.css — FIXED for Mobile 320 + Desktop 1920 — 2026-09-23 */
-html{overflow-x:clip}
-body{overflow-x:clip}
+/* responsive.css — Ultra Adaptive 2026 — Fluid + Container Queries */
+html,body{overflow-x:clip}
 
-/* === Desktop 1280-1920 (centered, max 1440) === */
-@media(min-width:1280px){
-  .hero-inner{max-width:1280px}
-  .section{max-width:1280px}
-}
-@media(min-width:1920px){
-  .container{max-width:1440px}
+/* 1440+ — ultra-wide, centered */
+@media(min-width:1440px){
+  :root{--max:1440px}
   .hero-inner{max-width:1440px}
   .section{max-width:1440px}
-  .course-grid{gap:16px}
-  .bank-grid{gap:16px}
+}
+@media(min-width:1920px){
+  .course-grid,.bank-grid{gap:18px}
 }
 
-/* === Tablet 768-1100 (2 columns) === */
+/* 1024-1280 — 3col stays, tighter gaps */
+@media(max-width:1280px){
+  .hero-inner{gap:32px}
+  .section{padding:24px 20px}
+}
+
+/* 1100 — hero stacks, grids 2col */
 @media(max-width:1100px){
-  .hero-inner{grid-template-columns:1fr; gap:24px}
+  .hero-inner{grid-template-columns:1fr; gap:28px}
   .course-grid{grid-template-columns:repeat(2,1fr)}
   .bank-grid{grid-template-columns:repeat(2,1fr)}
-  .booklet-wrap{grid-template-columns:1fr; gap:16px}
-  .booklet-side{position:relative; top:auto; display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .exam-hero{grid-template-columns:1fr; gap:12px}
-  .section{padding:16px}
+  .booklet-wrap{grid-template-columns:1fr; gap:20px}
+  .booklet-side{position:static; display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  .exam-hero{grid-template-columns:1fr}
 }
 
-/* === Mobile 900 (show bottom-nav, hide top nav) === */
+/* 900 — mobile shell: top nav → bottom nav + drawer */
 @media(max-width:900px){
   .nav{display:none !important}
-  #menuToggle{display:grid !important}
-  .bottom-nav{display:flex !important; position:fixed; bottom:0; left:0; right:0; background:rgba(10,6,28,0.96); border-top:1px solid var(--line); backdrop-filter:blur(16px) saturate(1.2); padding:6px 4px calc(6px + env(safe-area-inset-bottom)); justify-content:space-around; z-index:30; overflow-x:auto; scrollbar-width:none}
-  .bottom-nav::-webkit-scrollbar{display:none}
-  .bottom-nav button{flex:1 1 0; min-width:48px; background:transparent; border:0; color:var(--muted); font-size:10.5px; line-height:1.1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 2px; border-radius:10px; cursor:pointer}
-  .bottom-nav button.active{color:var(--accent); background:rgba(139,92,246,0.10)}
-  body{padding-bottom:72px} /* space for bottom-nav */
-  .drawer{width:88vw; max-width:320px}
-  .hero{padding:28px 16px 24px}
-  .hero h1{font-size:34px; line-height:1.15}
-  .hero-desc{font-size:14.5px}
+  #menuToggle{display:grid !important; width:42px; height:42px; border-radius:12px; border:1px solid var(--line); background:oklch(1 0 0 /0.06); color:var(--text)}
+  .bottom-nav{display:flex !important; position:fixed; inset:auto 0 0 0; height:68px; padding:6px 6px calc(6px + env(safe-area-inset-bottom)); background:oklch(0.12 0.05 280 /0.88); border-top:1px solid var(--line); backdrop-filter:blur(20px) saturate(1.4); -webkit-backdrop-filter:blur(20px) saturate(1.4); justify-content:space-around; z-index:30; gap:2px}
+  .bottom-nav button{flex:1; background:transparent; border:0; color:var(--muted); font-size:10.5px; font-weight:600; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 2px; border-radius:14px; cursor:pointer; transition:all .2s var(--ease)}
+  .bottom-nav button.active{color:white; background:oklch(0.62 0.22 290 /0.16); border:1px solid oklch(0.62 0.22 290 /0.22)}
+  body{padding-bottom:72px}
+  .drawer{width:88vw; max-width:360px; border-radius:20px 0 0 20px}
+  .hero{padding:36px 20px 32px}
+  .hero h1{font-size:clamp(32px, 9vw, 42px)}
   .section-head h2{font-size:18px}
-  .topbar{height:52px; padding:0 12px; gap:8px}
-  .brand b{font-size:14px}
-  .brand small{font-size:11px}
+  .topbar{height:56px; padding:0 14px}
 }
 
-/* === Mobile 640 (1 column) === */
+/* 640 — single column, full bleed */
 @media(max-width:640px){
-  .course-grid{grid-template-columns:1fr; gap:10px}
-  .bank-grid{grid-template-columns:1fr; gap:10px}
+  .course-grid,.bank-grid{grid-template-columns:1fr; gap:12px}
   .booklet-side{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column; align-items:stretch}
-  .hero-actions .btn{width:100%; justify-content:center}
-  .topbar{padding:0 10px}
-  .brand-mark{width:30px; height:30px; border-radius:9px; font-size:14px}
-  #loginBtn{padding:0 12px !important; height:36px !important; font-size:13px}
-  .section{padding:12px}
-  .course-card{padding:14px}
-  .bank-card{padding:14px}
-  .exam-main{padding:20px; min-height:auto}
-  .chapter-head{padding:12px 14px}
-  .chapter-body{padding:14px}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%; height:48px}
+  .topbar{height:52px; padding:0 12px; gap:10px}
+  .brand-mark{width:34px; height:34px; border-radius:11px; font-size:15px}
+  #loginBtn{height:38px !important; padding:0 14px !important; font-size:13.5px}
+  .section{padding:16px 14px}
+  .course-card,.bank-card{padding:16px; border-radius:16px}
+  .exam-main{padding:24px; min-height:auto; border-radius:20px}
+  .chapter-head{padding:14px 16px}
 }
 
-/* === Small Mobile 380 (320-380) === */
+/* 380 — compact */
 @media(max-width:380px){
-  .hero h1{font-size:28px}
-  .hero{padding:22px 12px 20px}
-  .topbar{height:48px}
-  .brand{Gap:8px}
-  .brand b{font-size:13px}
-  .bottom-nav button{font-size:10px; padding:5px 1px; min-width:44px}
-  .section-head{padding:10px 0}
-  .section-head p{font-size:12px; padding:8px 10px}
+  .hero{padding:26px 14px 24px}
+  .hero h1{font-size:30px}
+  .topbar{height:50px}
+  .brand b{font-size:13.5px}
+  .bottom-nav{height:64px}
+  .bottom-nav button{font-size:10px}
 }
 
-/* === Ensure no horizontal scroll on any device === */
-@media(max-width:900px){
-  .hero-inner, .section, .course-grid, .bank-grid, .booklet-wrap{width:100%; min-width:0}
-  .course-card, .bank-card, .bs-card{Min-width:0; overflow:hidden}
-}
-
-/* === Desktop hover only (avoid mobile sticky hover) === */
+/* Motion safety */
 @media(hover:hover){
-  .course-card:hover{transform:translateY(-2px); border-color:rgba(167,139,250,0.18); box-shadow:var(--shadow)}
+  .course-card:hover{transform:translateY(-4px) scale(1.01)}
 }
 @media(hover:none){
-  .course-card:active{transform:scale(0.99)}
+  .course-card:active{transform:scale(0.985)}
+  .card-3d{transform:none !important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
 }
 
-/* === Print (desktop) === */
+/* Print */
 @media print{
-  .topbar, .bottom-nav, .drawer, .hero-actions{display:none !important}
-  body{padding-bottom:0; background:white; color:black}
+  .topbar,.bottom-nav,.drawer,.hero-actions{display:none !important}
+  body{padding:0; background:white; color:black}
+  .hero,.course-card{border:1px solid #ddd; background:white !important}
 }

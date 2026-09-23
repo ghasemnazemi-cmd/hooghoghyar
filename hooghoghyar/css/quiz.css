@@ -1,3 +1,7 @@
-/* quiz.css — Premium */
-.exam-hero{display:grid; grid-template-columns:1.25fr 0.75fr; gap:20px}
-@media(max-width:900px){.exam-hero{grid-template-columns:1fr}}
+/* quiz.css — Premium Exam */
+.quiz-opt{width:100%; text-align:right; padding:14px 16px; border-radius:14px; border:1.5px solid var(--line); background:oklch(1 0 0 /0.04); color:var(--text); cursor:pointer; transition:all .18s var(--ease)}
+.quiz-opt:hover{border-color:var(--line-hover); background:oklch(1 0 0 /0.06); transform:translateY(-1px)}
+.quiz-opt.correct{border-color:oklch(0.65 0.16 145); background:oklch(0.65 0.16 145 /0.12)}
+.quiz-opt.wrong{border-color:oklch(0.62 0.22 25); background:oklch(0.62 0.22 25 /0.10)}
+.quiz-progress{height:6px; border-radius:999px; background:oklch(1 0 0 /0.08); overflow:hidden}
+.quiz-progress > i{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--accent2)); transition:width .4s var(--ease)}
