@@ -1,6 +1,7 @@
-// quiz.js — Exam simulation, timer, scoring — DOM API
+// quiz.js — Exam simulation, timer, scoring — DOM API — uses shared cache
 import { escapeHtml, toast } from './ui.js';
 import { saveExamResult } from './idb.js';
+import { loadQuestions as loadQs } from './questions.js';
 
 let quizQuestions=[];
 let currentIndex=0;
@@ -9,9 +10,11 @@ let timer=null;
 let timeLeft=30*60;
 
 export async function startExam(){
-  const res=await fetch('./data/questions.json');
-  const all=await res.json();
-  quizQuestions = all.sort(()=> Math.random()-0.5).slice(0,20);
+  const all=await loadQs();
+  // filter to scorable (mcq/tf with definite ans) — essay/case have null ans
+  const scorable = all.filter(q=> (q.type==='mcq' && typeof q.ans==='number') || (q.type==='tf' && typeof q.ans==='boolean'));
+  const pool = scorable.length>=20 ? scorable : all.filter(q=> q.ans!==null && q.ans!==undefined);
+  quizQuestions = pool.sort(()=> Math.random()-0.5).slice(0,20);
   currentIndex=0; score=0; timeLeft=30*60;
   renderQuestion();
   startTimer();
@@ -43,7 +46,7 @@ function renderQuestion(){
     quizQuestions.forEach((_,i)=>{
       const dot=document.createElement('div');
       dot.className='dot '+(i===currentIndex?'active':i<currentIndex?'done':'');
-      dot.style.cssText='width:8px; height:8px; border-radius:50%; background:'+(i===currentIndex?'var(--accent)':i<currentIndex?'var(--accent2)':'rgba(255,255,255,0.12)');
+      dot.style.cssText='width:8px; height:8px; border-radius:50%; background:'+(i===currentIndex?'var(--accent)':i<currentIndex?'var(--accent-2)':'var(--line)');
       dots.appendChild(dot);
     });
   }
@@ -79,7 +82,7 @@ function renderQuestion(){
     optsWrap.appendChild(tfWrap);
     const ta=document.createElement('textarea');
     ta.placeholder='پاسخ تشریحی (اختیاری)';
-    ta.style.cssText='margin-top:8px; width:100%; min-height:80px; background:rgba(255,255,255,0.06); border:1px solid var(--line); border-radius:12px; padding:12px; color:var(--text)';
+    ta.style.cssText='margin-top:8px; width:100%; min-height:80px; background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:12px; color:var(--text)';
     optsWrap.appendChild(ta);
   }
   const actions=document.createElement('div');
@@ -137,6 +140,7 @@ function nextQuestion(){
       else renderQuestion();
     }, 900);
   } else {
+    // tf: checkAnswer already done via button, just advance
     currentIndex++;
     if(currentIndex>=quizQuestions.length) finishExam();
     else renderQuestion();
@@ -167,6 +171,7 @@ function finishExam(){
     area.appendChild(wrap);
   }
   saveExamResult({score, total: quizQuestions.length, details: quizQuestions}).catch(()=>{});
+  try{ document.dispatchEvent(new CustomEvent('exam:finished')); }catch{}
   toast(`پایان — ${score}/${quizQuestions.length}`);
 }
 

@@ -1,12 +1,12 @@
 // bank.js — 895 questions, faceted filter, DocumentFragment + DOM API (no innerHTML for data)
 import { escapeHtml } from './ui.js';
+import { loadQuestions as loadQs } from './questions.js';
 
 let questions=[];
 
 export async function loadQuestions(){
   if(questions.length) return questions;
-  const res=await fetch('./data/questions.json');
-  questions=await res.json();
+  questions = await loadQs();
   return questions;
 }
 
@@ -22,6 +22,10 @@ export function renderBank(){
     const searchOk = !search || q.q.toLowerCase().includes(search) || q.course.toLowerCase().includes(search);
     return typeOk && searchOk;
   });
+  const total=filtered.length;
+  // show count in UI if element exists
+  const countEl=document.getElementById('bankCount');
+  if(countEl) countEl.textContent = total>40 ? `نمایش ۴۰ از ${total}` : `${total} مورد`;
   filtered=filtered.slice(0,40);
   filtered.forEach(q=>{
     const div=document.createElement('div');

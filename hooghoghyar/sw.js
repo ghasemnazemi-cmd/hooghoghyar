@@ -1,5 +1,5 @@
 // sw.js — Service Worker — Offline-first for PWA (Cache-first for static, Network-first for data)
-const CACHE = 'hooghoghyar-v9-professional';
+const CACHE = 'hooghoghyar-v10-audit';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -52,6 +52,11 @@ self.addEventListener('activate', (e)=>{
 
 self.addEventListener('fetch', (e)=>{
   const url = new URL(e.request.url);
+  // Navigation: network first, fallback to index
+  if(e.request.mode === 'navigate'){
+    e.respondWith(fetch(e.request).catch(()=> caches.match('./index.html')));
+    return;
+  }
   // Data: Network-first with cache fallback
   if(url.pathname.includes('/data/')){
     e.respondWith(

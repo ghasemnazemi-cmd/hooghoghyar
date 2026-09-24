@@ -3,13 +3,14 @@
 import { get, set } from './storage.js';
 import { idbGetAll, idbPut } from './idb.js';
 
-const API = (localStorage.getItem('hq_api') || 'http://localhost:3001').replace(/\/$/, '');
+const API = (localStorage.getItem('hq_api') || (location.hostname.includes('github.io') ? '' : 'http://localhost:3001')).replace(/\/$/, '');
 
 export function getToken(){ return get('token', null); }
 export function setToken(t){ set('token', t); }
 export function isLoggedIn(){ return !!getToken(); }
 
 export async function login(username, password){
+  if(!API) throw new Error('Sync در GitHub Pages فعال نیست — API لوکال است');
   const res = await fetch(`${API}/api/auth/login`, {
     method:'POST',
     headers:{'Content-Type':'application/json'},

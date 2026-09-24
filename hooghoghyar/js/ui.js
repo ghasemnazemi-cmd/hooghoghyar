@@ -37,12 +37,22 @@ export function initDrawer(){
   const drawer=document.getElementById('drawer');
   const toggle=document.getElementById('menuToggle');
   const closeBtn=document.getElementById('drawerClose');
+  // create backdrop if not exists
+  let backdrop = document.getElementById('drawerBackdrop');
+  if(!backdrop){
+    backdrop = document.createElement('div');
+    backdrop.id='drawerBackdrop';
+    backdrop.style.cssText='position:fixed; inset:0; background:oklch(0 0 0 / 0.32); backdrop-filter:blur(2px); z-index:49; display:none';
+    document.body.appendChild(backdrop);
+    backdrop.addEventListener('click', ()=> closeDrawer());
+  }
   function openDrawer(){
     if(!drawer) return;
     drawer.classList.add('open');
     drawer.setAttribute('aria-hidden','false');
     toggle?.setAttribute('aria-expanded','true');
     document.body.style.overflow='hidden';
+    if(backdrop) backdrop.style.display='block';
     const first = drawer.querySelector('button, a, input');
     first?.focus();
   }
@@ -52,6 +62,7 @@ export function initDrawer(){
     drawer.setAttribute('aria-hidden','true');
     toggle?.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
+    if(backdrop) backdrop.style.display='none';
     toggle?.focus();
   }
   toggle?.addEventListener('click', openDrawer);

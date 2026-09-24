@@ -4,8 +4,8 @@
   "description": "آکادمی حقوق ایران — ۴۶ درس، ۸۹۵ سوال، کتابچه، شبیه‌ساز وکالت",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#07051a",
-  "theme_color": "#07051a",
+  "background_color": "#0B0F1A",
+  "theme_color": "#0B0F1A",
   "orientation": "portrait-primary",
   "lang": "fa",
   "dir": "rtl",
@@ -23,7 +23,10 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["education", "productivity"],
+  "categories": [
+    "education",
+    "productivity"
+  ],
   "shortcuts": [
     {
       "name": "بانک سوالات",

@@ -56,9 +56,18 @@ export function initBooklet(){
   if(search){
     search.addEventListener('input', ()=>{
       const q = search.value.trim().toLowerCase();
+      let visible=0;
       document.querySelectorAll('.article-box').forEach(box=>{
         const text = box.textContent.toLowerCase();
-        box.style.display = !q || text.includes(q) ? '' : 'none';
+        const show = !q || text.includes(q);
+        box.style.display = show ? '' : 'none';
+        if(show) visible++;
+      });
+      // toggle chapters visibility if no match inside
+      document.querySelectorAll('.chapter').forEach(ch=>{
+        const hasVisible = ch.querySelector('.article-box:not([style*="display: none"])');
+        if(q) ch.style.display = hasVisible ? '' : 'none';
+        else ch.style.display = '';
       });
     });
   }
@@ -77,11 +86,14 @@ export function initBooklet(){
       container.textContent = '';
       const frag = document.createDocumentFragment();
       laws.forEach(law=>{
-        const div = document.createElement('div');
-        div.className = 'article-box';
-        div.dataset.article = law.id;
-        div.innerHTML = law.html;
-        frag.appendChild(div);
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = law.html.trim();
+        const el = wrapper.firstElementChild || wrapper;
+        // ensure data-article present
+        if(!el.dataset.article) el.dataset.article = law.id;
+        // ensure class article-box
+        if(!el.classList.contains('article-box')) el.classList.add('article-box');
+        frag.appendChild(el);
       });
       container.appendChild(frag);
       console.log('[booklet] rendered', laws.length);
@@ -90,9 +102,10 @@ export function initBooklet(){
         comm.textContent = '';
         const frag2 = document.createDocumentFragment();
         laws.slice(0,10).forEach(law=>{
-          const d=document.createElement('div');
-          d.className='article-box';
-          d.innerHTML = law.html.replace('ماده','ماده تجارت ');
+          const w=document.createElement('div');
+          w.innerHTML = law.html.replace('ماده','ماده تجارت ').trim();
+          const d=w.firstElementChild || w;
+          if(!d.classList.contains('article-box')) d.classList.add('article-box');
           frag2.appendChild(d);
         });
         comm.appendChild(frag2);

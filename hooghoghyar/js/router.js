@@ -10,7 +10,7 @@ export function switchTab(which){
   const target = document.getElementById('tab-'+which);
   if(target) target.classList.add('active');
   // nav active
-  document.querySelectorAll('.nav-link, .drawer-link').forEach(btn=>{
+  document.querySelectorAll('.nav-link, .drawer-link, .bottom-nav button').forEach(btn=>{
     btn.classList.toggle('active', btn.dataset.tab===which);
   });
   // aria

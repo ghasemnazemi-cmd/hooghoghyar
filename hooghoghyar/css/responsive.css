@@ -46,3 +46,8 @@ html,body{overflow-x:clip}
 @media(hover:none){
   .course-card:active, .bank-card:active{transform:scale(0.992)}
 }
+
+@media(max-width:900px){ .toast{ bottom:84px } }
+@media(min-width:901px){ .toast{ bottom:20px } }
+
+@media(max-width:640px){ .search input, #searchInput, #bankSearch, #bookletSearch{ font-size:16px !important } }

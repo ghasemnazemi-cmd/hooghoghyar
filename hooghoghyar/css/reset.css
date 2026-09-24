@@ -24,3 +24,7 @@ a{color:inherit; text-decoration:none}
 ::-webkit-scrollbar-thumb:hover{background: oklch(1 0 0 / 0.16); background-clip:content-box}
 html{scrollbar-width:thin; scrollbar-color: oklch(1 0 0 / 0.14) transparent}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important; transition:none !important; scroll-behavior:auto !important}}
+
+body{ min-height: calc(var(--vh, 1vh) * 100); }
+
+*{ -webkit-tap-highlight-color: transparent }
