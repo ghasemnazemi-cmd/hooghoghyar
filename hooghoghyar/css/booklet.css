@@ -1,6 +1,4 @@
-/* booklet.css — Premium Booklet */
-.law{border-radius:14px; border:1px solid var(--line); background:oklch(1 0 0 /0.03); padding:14px 16px; transition:all .2s var(--ease)}
-.law:hover{border-color:var(--line-hover); background:oklch(1 0 0 /0.05)}
-.law b{color:var(--accent); font-feature-settings:'ss01' 1}
-.law-note{font-size:12.5px; color:var(--muted); border-right:3px solid oklch(0.62 0.22 290 /0.25); padding-right:10px; margin-top:8px}
-.booklet-side .bs-card{backdrop-filter:blur(8px)}
+/* booklet.css — Professional */
+.law{border-radius:10px; border:1px solid var(--line); background: var(--surface); padding:14px 16px}
+.law b{color:var(--text); font-weight:700}
+.law-note{font-size:12.5px; color:var(--muted); border-inline-start:2px solid var(--line-strong); padding-inline-start:10px; margin-top:8px}

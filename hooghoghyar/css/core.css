@@ -1,27 +1,18 @@
-/* core.css — Fluid + Motion Primitives — Ultra 2026 */
-html{font-size:16px; scrollbar-gutter:stable; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility}
-h1,h2,h3{font-family:'Fraunces','Vazirmatn',serif; letter-spacing:-0.035em; line-height:.92; text-wrap:balance; font-feature-settings:'ss01' 1}
-h1{font-size:clamp(34px, 6vw, 64px); font-weight:800}
-h2{font-size:clamp(20px, 2.6vw, 28px); font-weight:700}
-h3{font-size:clamp(14.5px, 1.6vw, 16.5px); font-weight:650}
-small{color:var(--muted); font-size:.88em}
-::selection{background:oklch(0.62 0.22 290 /0.22)}
-:focus-visible{outline:2px solid oklch(0.62 0.22 290 /0.5); outline-offset:2px; border-radius:8px}
-.container{max-width:var(--max); margin:0 auto; padding:0 24px}
-.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-.skip-link:focus{left:16px; top:16px; width:auto; height:auto; background:white; color:black; padding:12px 16px; border-radius:12px; z-index:9999; box-shadow:var(--shadow-lg)}
+/* core.css — Editorial Typography — Professional */
+html{font-size:16px}
+h1,h2,h3{font-family:'Vazirmatn','Fraunces',serif; font-weight:700; letter-spacing:-0.03em; line-height:1.08; text-wrap:balance}
+h1{font-size: clamp(30px, 4.8vw, 46px); font-weight:800; letter-spacing:-0.045em}
+h2{font-size: clamp(18px, 2.2vw, 22px); letter-spacing:-0.025em}
+h3{font-size: 15px; letter-spacing:-0.015em}
+small, .muted{color:var(--muted)}
+.container{max-width:var(--max); margin:0 auto; padding:0 var(--gutter)}
+.skip-link{position:absolute; inset-inline-start:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+.skip-link:focus{inset-inline-start:16px; top:16px; width:auto; height:auto; background:white; color:black; padding:10px 14px; border-radius:10px; z-index:9999; box-shadow:var(--shadow-lg)}
+
+/* motion primitives — restrained */
 @media(prefers-reduced-motion:no-preference){
-  @keyframes fadeIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
-  @keyframes scaleIn{from{opacity:0; transform:scale(.96)} to{opacity:1; transform:scale(1)}}
-  @keyframes shimmer{0%{transform:translateX(-100%)} 100%{transform:translateX(220%)}}
-  @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)}}
-  @keyframes glow{0%,100%{opacity:.6} 50%{opacity:1}}
-  @keyframes borderSpin{to{--angle:360deg}}
-  .animate-in{animation:fadeIn .62s var(--ease) both}
-  .animate-scale{animation:scaleIn .42s var(--ease-spring) both}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  @keyframes scaleIn{from{opacity:0; transform:scale(0.985)} to{opacity:1; transform:scale(1)}}
+  @keyframes lineIn{from{transform:scaleX(0)} to{transform:scaleX(1)}}
 }
-/* Scrollbar premium */
-::-webkit-scrollbar{width:8px; height:8px}
-::-webkit-scrollbar-thumb{background:oklch(0.62 0.22 290 /0.18); border-radius:999px; border:2px solid transparent; background-clip:content-box}
-::-webkit-scrollbar-thumb:hover{background:oklch(0.62 0.22 290 /0.28); background-clip:content-box}
-html{scrollbar-color:oklch(0.62 0.22 290 /0.22) transparent}
+.animate-in{animation:fadeIn 0.5s var(--ease) both}

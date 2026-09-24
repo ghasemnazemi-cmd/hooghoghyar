@@ -1,11 +1,52 @@
-/* variables.css — Ultra Modern Premium — 2026 */
+/* variables.css — Professional Design Tokens — Ink & Paper 2026 */
 :root{
-  --bg:oklch(0.12 0.05 280); --bg-soft:oklch(0.16 0.04 280); --surface:oklch(0.18 0.04 285); --surface2:oklch(0.22 0.03 285); --surface3:oklch(0.26 0.02 285);
-  --line:oklch(0.9 0 0 / 0.07); --line2:oklch(0.9 0 0 / 0.12); --line-hover:oklch(0.9 0 0 / 0.18);
-  --accent:oklch(0.62 0.22 290); --accent2:oklch(0.82 0.12 200); --accent-glow:oklch(0.62 0.22 290 / 0.3);
-  --gold:oklch(0.88 0.08 85); --text:oklch(0.98 0.01 280); --muted:oklch(0.98 0.01 280 / 0.56); --muted2:oklch(0.98 0.01 280 / 0.36);
-  --radius-sm:12px; --radius:16px; --radius-lg:22px; --radius-xl:28px; --radius-full:999px;
-  --shadow-sm:0 2px 12px oklch(0 0 0 / 0.08); --shadow:0 8px 32px oklch(0 0 0 / 0.18); --shadow-lg:0 24px 64px oklch(0 0 0 / 0.28); --shadow-glow:0 12px 40px oklch(0.62 0.22 290 / 0.18);
-  --ease:cubic-bezier(0.22,1,0.36,1); --ease-spring:cubic-bezier(0.34,1.56,0.64,1); --ease-smooth:cubic-bezier(0.25,0.1,0.25,1); --ease-out:cubic-bezier(0.16,1,0.3,1);
-  --max:1280px;
+  /* — Ink (dark) — deep navy, not purple-black */
+  --bg: oklch(0.11 0.015 264);
+  --bg-elevated: oklch(0.145 0.012 264);
+  --surface: oklch(0.17 0.01 264);
+  --surface-2: oklch(0.205 0.008 264);
+  --surface-3: oklch(0.235 0.006 264);
+
+  /* lines — hairline, barely there */
+  --line: oklch(1 0 0 / 0.06);
+  --line-strong: oklch(1 0 0 / 0.10);
+  --line-hover: oklch(1 0 0 / 0.14);
+
+  /* text — warm white, not blue-white */
+  --text: oklch(0.975 0.004 85);
+  --text-2: oklch(0.975 0.004 85 / 0.72);
+  --muted: oklch(0.68 0.008 264);
+  --muted-2: oklch(0.55 0.008 264);
+  --faint: oklch(1 0 0 / 0.40);
+
+  /* accent — single, muted violet-brass, law gold hint */
+  --accent: oklch(0.56 0.14 285);
+  --accent-2: oklch(0.72 0.09 75); /* brass — used sparingly for stats/gold */
+  --accent-soft: oklch(0.56 0.14 285 / 0.09);
+  --accent-ring: oklch(0.56 0.14 285 / 0.18);
+
+  /* semantic */
+  --success: oklch(0.62 0.13 150);
+  --danger: oklch(0.60 0.18 25);
+  --warning: oklch(0.78 0.14 75);
+
+  /* radii — consistent, not bubbly */
+  --r-xs: 8px; --r-sm: 11px; --r: 14px; --r-lg: 18px; --r-xl: 22px; --r-pill: 999px;
+
+  /* shadows — subtle, layered, no purple glow */
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.08), 0 1px 6px oklch(0 0 0 / 0.06);
+  --shadow-sm: 0 2px 10px oklch(0 0 0 / 0.10), 0 4px 20px oklch(0 0 0 / 0.08);
+  --shadow: 0 8px 28px oklch(0 0 0 / 0.14), 0 2px 8px oklch(0 0 0 / 0.10);
+  --shadow-lg: 0 20px 60px oklch(0 0 0 / 0.22), 0 4px 16px oklch(0 0 0 / 0.12);
+
+  /* motion — Linear-like, restrained */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-fast: 140ms; --dur: 220ms; --dur-slow: 420ms;
+
+  /* layout */
+  --max: 1200px;
+  --gutter: 24px;
+  --header-h: 56px;
 }

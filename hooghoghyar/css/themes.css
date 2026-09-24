@@ -1,11 +1,24 @@
-/* themes.css — Light + Dark Ultra — OKLCH */
+/* themes.css — Paper (light) — warm, scholarly */
 html[data-theme="light"]{
-  --bg:oklch(0.98 0.01 90); --bg-soft:oklch(0.96 0.01 90); --surface:white; --surface2:oklch(0.97 0.005 90); --surface3:oklch(0.95 0.008 90);
-  --text:oklch(0.18 0.02 280); --muted:oklch(0.18 0.02 280 /0.58); --muted2:oklch(0.18 0.02 280 /0.36);
-  --line:oklch(0 0 0 /0.07); --line2:oklch(0 0 0 /0.10); --line-hover:oklch(0 0 0 /0.14);
-  --shadow-sm:0 2px 12px oklch(0 0 0 /0.06); --shadow:0 8px 28px oklch(0 0 0 /0.10); --shadow-lg:0 20px 50px oklch(0 0 0 /0.12);
+  --bg: oklch(0.985 0.006 85);
+  --bg-elevated: oklch(0.99 0.004 85);
+  --surface: white;
+  --surface-2: oklch(0.975 0.004 85);
+  --surface-3: oklch(0.955 0.006 85);
+  --line: oklch(0 0 0 / 0.07);
+  --line-strong: oklch(0 0 0 / 0.10);
+  --line-hover: oklch(0 0 0 / 0.14);
+  --text: oklch(0.15 0.012 264);
+  --text-2: oklch(0.15 0.012 264 / 0.75);
+  --muted: oklch(0.48 0.008 264);
+  --muted-2: oklch(0.60 0.008 264);
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.06);
+  --shadow-sm: 0 2px 12px oklch(0 0 0 / 0.07);
+  --shadow: 0 8px 24px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 20px 50px oklch(0 0 0 / 0.10);
 }
-html[data-theme="light"] .topbar{background:oklch(0.98 0.01 90 /0.78); border-color:oklch(0 0 0 /0.06)}
-html[data-theme="light"] .hero{background:radial-gradient(1000px 600px at 80% -10%, oklch(0.62 0.22 290 /0.07), transparent 60%), linear-gradient(180deg, white, oklch(0.98 0.01 90))}
-html[data-theme="light"] .course-card, html[data-theme="light"] .bank-card, html[data-theme="light"] .bs-card{background:white; border-color:oklch(0 0 0 /0.06)}
-html[data-theme="light"] .bottom-nav{background:oklch(0.98 0.01 90 /0.92)}
+html[data-theme="light"] body{background: var(--bg)}
+html[data-theme="light"] .topbar{background: oklch(0.985 0.006 85 / 0.86); border-color: oklch(0 0 0 / 0.06)}
+html[data-theme="light"] .hero{background: white; border-color: oklch(0 0 0 / 0.07)}
+html[data-theme="light"] .course-card, html[data-theme="light"] .bank-card, html[data-theme="light"] .bs-card, html[data-theme="light"] .chapter{background: white}
+html[data-theme="light"] .bottom-nav{background: oklch(0.985 0.006 85 / 0.94)}

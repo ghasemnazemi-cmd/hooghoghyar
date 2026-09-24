@@ -1,41 +1,17 @@
-/* animations.css — Ultra Motion 2026 — Stagger • Reveal • 3D • Shine • Magnetic */
-@property --angle{syntax:'<angle>'; initial-value:0deg; inherits:false}
-
-/* Stagger — dzieci fadeIn sekwencyjnie */
-.stagger > *{opacity:0; animation:fadeIn 0.55s var(--ease) both}
-.stagger > *:nth-child(1){animation-delay:.06s}
-.stagger > *:nth-child(2){animation-delay:.12s}
-.stagger > *:nth-child(3){animation-delay:.18s}
-.stagger > *:nth-child(4){animation-delay:.24s}
-.stagger > *:nth-child(5){animation-delay:.30s}
-.stagger > *:nth-child(6){animation-delay:.36s}
-.stagger > *:nth-child(7){animation-delay:.42s}
-.stagger > *:nth-child(8){animation-delay:.48s}
-
-/* Reveal — IntersectionObserver adds .in */
-.reveal{opacity:0; transform:translateY(18px) scale(0.98); transition:opacity 0.6s var(--ease), transform 0.6s var(--ease)}
-.reveal.in{opacity:1; transform:none}
-
-/* 3D card — tilt on mousemove (js sets --rx/--ry) */
-.card-3d{transform-style:preserve-3d; transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease)}
-.card-3d:hover{transform:translateY(-5px) rotateX(2deg) rotateY(-2deg); box-shadow:var(--shadow-glow), var(--shadow-lg)}
-
-/* Shine — diagonal sweep */
+/* animations.css — Restrained Professional Motion */
+@media(prefers-reduced-motion:no-preference){
+  .stagger > *{opacity:0; animation: fadeIn 0.45s var(--ease) both}
+  .stagger > *:nth-child(1){animation-delay:0.04s}
+  .stagger > *:nth-child(2){animation-delay:0.08s}
+  .stagger > *:nth-child(3){animation-delay:0.12s}
+  .stagger > *:nth-child(4){animation-delay:0.16s}
+  .stagger > *:nth-child(5){animation-delay:0.20s}
+  .stagger > *:nth-child(6){animation-delay:0.24s}
+  /* reveal — subtle */
+  .reveal{opacity:0; transform:translateY(8px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease)}
+  .reveal.in{opacity:1; transform:none}
+}
 .shine{position:relative; overflow:hidden}
-.shine::after{content:''; position:absolute; inset:-1px; background:linear-gradient(100deg, transparent 30%, oklch(1 0 0 /0.10) 45%, transparent 62%); transform:translateX(-120%); transition:transform .7s var(--ease)}
-.shine:hover::after{transform:translateX(120%)}
-
-/* Magnetic button — js lerp */
-.magnetic{transition:transform .25s var(--ease-spring)}
-
-/* Glow pulse for badge */
-.pulse{animation:glow 2.4s ease infinite}
-
-/* View transition — chrome */
-::view-transition-old(root),::view-transition-new(root){animation-duration:.42s; animation-timing-function:var(--ease)}
-
-/* Grain subtle */
-.grain::before{content:''; position:absolute; inset:0; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.03%22/></svg>'); pointer-events:none; opacity:.4}
-
-/* Skeleton shimmer for loading */
-.skeleton{background:linear-gradient(90deg, oklch(1 0 0 /0.04) 25%, oklch(1 0 0 /0.08) 50%, oklch(1 0 0 /0.04) 75%); background-size:200% 100%; animation:shimmer 1.4s linear infinite}
+@media(hover:hover){
+  .course-card:hover, .bank-card:hover{transform: translateY(-2px)}
+}
